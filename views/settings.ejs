@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Terraria Server Control</title>
+
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/settings.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title">Terraria Server Control</h1>
+        
+        <nav class="navbar">
+            <a href="/" class="nav-item">Server List</a>
+            <a href="/settings" class="nav-item active">Settings</a>
+        </nav>
+        
+        <div class="content">
+            <div class="settings-card">
+                <h2>Application Settings</h2>
+                
+                <form id="settingsForm" class="settings-form">
+                    <div class="form-group">
+                        <label for="apiKey">API Key</label>
+                        <div class="api-key-container">
+                            <input type="password" id="apiKey" value="<%= apiKey %>" readonly>
+                            <button type="button" id="showApiKey" class="btn secondary-btn">Show</button>
+                            <button type="button" id="regenerateApiKey" class="btn warning-btn">Regenerate</button>
+                        </div>
+                        <p class="help-text">This key is used for authentication. Keep it secure.</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="terrariaPath">Terraria Server Path</label>
+                        <input type="text" id="terrariaPath" name="terrariaPath" value="<%= settings.terrariaPath || '' %>" placeholder="C:\Path\To\TerrariaServer.exe">
+                        <p class="help-text">Full path to your TerrariaServer.exe file</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="autoStart">Auto-Start Servers</label>
+                        <div class="toggle-container">
+                            <input type="checkbox" id="autoStart" name="autoStart" <%= settings.autoStart ? 'checked' : '' %>>
+                            <label for="autoStart" class="toggle-label"></label>
+                        </div>
+                        <p class="help-text">Automatically start servers when the application launches</p>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn primary-btn">Save Settings</button>
+                        <button type="button" id="resetSettings" class="btn secondary-btn">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/settings.js"></script>
+</body>
+</html>

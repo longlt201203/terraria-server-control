@@ -1,0 +1,70 @@
+/* Settings page specific styles */
+.settings-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.settings-card h2 {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.api-key-container {
+    display: flex;
+    gap: 10px;
+}
+
+.api-key-container input {
+    flex: 1;
+}
+
+/* Toggle switch styling */
+.toggle-container {
+    position: relative;
+    display: inline-block;
+}
+
+.toggle-container input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-label {
+    position: relative;
+    display: block;
+    width: 60px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-label:before {
+    content: "";
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    background-color: white;
+    transition: transform 0.3s;
+}
+
+input:checked + .toggle-label {
+    background-color: #4a90e2;
+}
+
+input:checked + .toggle-label:before {
+    transform: translateX(30px);
+}
+
+.form-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+}

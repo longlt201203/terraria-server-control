@@ -1,0 +1,141 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.main-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.nav-item {
+    padding: 15px 30px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.nav-item:hover {
+    background-color: #f0f0f0;
+}
+
+.nav-item.active {
+    background-color: #4a90e2;
+    color: white;
+}
+
+/* Button styles */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.primary-btn {
+    background-color: #4a90e2;
+    color: white;
+}
+
+.primary-btn:hover:not(:disabled) {
+    background-color: #357abd;
+}
+
+.secondary-btn {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.secondary-btn:hover:not(:disabled) {
+    background-color: #e0e0e0;
+}
+
+.warning-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.warning-btn:hover:not(:disabled) {
+    background-color: #c0392b;
+}
+
+.action-btn {
+    padding: 6px 12px;
+    margin-left: 5px;
+}
+
+/* Content area */
+.content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+
+.help-text {
+    font-size: 12px;
+    color: #777;
+    margin-top: 5px;
+}
