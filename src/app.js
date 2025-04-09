@@ -1,10 +1,11 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const Controller = require("./controller");
+const Controller = require("./controllers/controller");
 const { API_KEY } = require("./utils");
-const sequelize = require("./db/db");
+const sqlize = require("./db/db");
 const app = express();
 const port = 3000;
 
@@ -16,9 +17,11 @@ app.use(cookieParser());
 
 app.use(Controller);
 
-sequelize
+sqlize
   .authenticate()
   .then(() => {
+    require("./db/relations");
+
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
       console.log(`Login api key: ${API_KEY}`);

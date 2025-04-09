@@ -1,9 +1,9 @@
 const { DataTypes } = require("sequelize");
 const sqlize = require("../db");
 
-const ModModel = sqlize.define("mod", {
+const CharacterModel = sqlize.define("character", {
   id: {
-    field: "mod_id",
+    field: "character_id",
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
@@ -11,7 +11,8 @@ const ModModel = sqlize.define("mod", {
   name: {
     field: "name",
     type: DataTypes.STRING,
+    allowNull: false,
   },
 });
 
-module.exports = ModModel;
+module.exports = CharacterModel;

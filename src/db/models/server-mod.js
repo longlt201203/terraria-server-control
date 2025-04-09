@@ -1,17 +1,13 @@
 const { DataTypes } = require("sequelize");
 const sqlize = require("../db");
 
-const ModModel = sqlize.define("mod", {
+const ServerModModel = sqlize.define("server_mod", {
   id: {
-    field: "mod_id",
+    field: "server_mod_id",
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  name: {
-    field: "name",
-    type: DataTypes.STRING,
-  },
 });
 
-module.exports = ModModel;
+module.exports = ServerModModel;

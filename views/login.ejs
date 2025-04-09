@@ -6,24 +6,20 @@
     <title>Login</title>
 
     <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
-    <div class="login-container">
-        <h1>Login</h1>
-        <form action="" method="POST" class="login-form">
-            <div class="form-group">
-                <label for="apiKey">API Key</label>
-                <input type="password" id="apiKey" name="apiKey" placeholder="Enter your API key" required>
-            </div>
-            <% if (locals.error) { %>
-                <div class="error-message"><%= error %></div>
-            <% } %>
-            <button type="submit" class="login-button">Login</button>
-        </form>
-        <div class="info-text">
-            <p>Please enter your API key to access the Terraria Server Control Panel.</p>
+    <h1>Login</h1>
+    <% if (error) { %>
+        <p><%= error %></p>
+    <% } %>
+    <form action="" method="post">
+        <div>
+            <label for="apiKey">API Key</label>
+            <input type="text" name="apiKey" id="apiKey">
         </div>
-    </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
 </body>
 </html>
