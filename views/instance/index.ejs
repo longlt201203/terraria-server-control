@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terraria Server Control</title>
+
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="/">Home</a>
+            </li>
+        </ul>
+    </nav>
+
+    <h1>Instance <%= instance.id %></h1>
+    <p>Port: <%= instance.port %></p>
+    <p>Status: <%= instance.status %></p>
+    <div>
+        <a href="/instance/<%= instance.id %>/delete">Delete</a>
+    </div>
+</body>
+</html>

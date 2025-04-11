@@ -15,7 +15,7 @@ const CharacterModel = sqlize.define('characters', {
 	},
 });
 
-const WorldModel = sqlize.define('world', {
+const WorldModel = sqlize.define('worlds', {
 	id: {
 		field: 'world_id',
 		type: DataTypes.INTEGER,
@@ -27,6 +27,15 @@ const WorldModel = sqlize.define('world', {
 		type: DataTypes.STRING,
 		allowNull: false,
 	},
+});
+
+const InstanceModel = sqlize.define('instances', {
+	id: {
+		field: 'instance_id',
+		type: DataTypes.INTEGER,
+		primaryKey: true,
+		autoIncrement: true,
+	},
 	port: {
 		field: 'port',
 		type: DataTypes.INTEGER,
@@ -34,7 +43,6 @@ const WorldModel = sqlize.define('world', {
 	status: {
 		field: 'status',
 		type: DataTypes.TINYINT,
-		allowNull: false,
 		defaultValue: 0,
 	},
 });
@@ -61,6 +69,13 @@ const WorldModModel = sqlize.define('world_mod', {
 	},
 });
 
+WorldModel.hasOne(InstanceModel, {
+	foreignKey: 'world_id',
+});
+InstanceModel.belongsTo(WorldModel, {
+	foreignKey: 'world_id',
+});
+
 WorldModel.hasMany(WorldModModel, {
 	foreignKey: 'world_id',
 });
@@ -80,4 +95,5 @@ module.exports = {
 	WorldModel,
 	ModModel,
 	WorldModModel,
+	InstanceModel,
 };

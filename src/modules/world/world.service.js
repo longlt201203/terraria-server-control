@@ -1,6 +1,10 @@
 const fs = require('fs');
 const { getServerInfo } = require('../server/server.service');
 const { WorldModel } = require('../../db/models');
+const {
+	createInstance,
+	startInstance,
+} = require('../instance/instance.service');
 
 exports.listWorlds = async () => {
 	return await WorldModel.findAll();
@@ -33,4 +37,10 @@ exports.syncWorlds = async () => {
 	});
 
 	await Promise.all(promises);
+};
+
+exports.startWorld = async (world, dto) => {
+	const instance = await createInstance(world, dto);
+	startInstance(instance.id);
+	return instance;
 };

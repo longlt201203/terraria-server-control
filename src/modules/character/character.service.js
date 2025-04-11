@@ -13,7 +13,6 @@ exports.syncCharacters = async () => {
 		const parts = item.split('.');
 		return parts[parts.length - 1] == 'plr';
 	});
-	console.log(listCharactersFiles);
 	const promises = listCharactersFiles.map(async (filename) => {
 		const filenameWithoutExt = filename.split('.')[0];
 		const character = await CharacterModel.findOne({

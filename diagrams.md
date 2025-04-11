@@ -2,10 +2,8 @@
 
 ```mermaid
 erDiagram
-    "ADMIN" ||--o{ "SERVER" : "Has"
-    "SERVER" ||--o{ "WORLD" : "Host"
-    "SERVER" }o--o{ "MOD" : "Has"
-    "WORLD" }o--o{ "MOD" : "Has"
+    "SERVER" ||--o{ "WORLD" : "Hosts"
+    "WORLD" }o--o{ "MOD" : "Uses"
     "SERVER" ||--o{ "CHARACTER" : "Has"
 ```
 #
@@ -14,44 +12,43 @@ erDiagram
 erDiagram
     server {
         int server_id PK
+        varchar name
         varchar ip
+        timestamp createdAt
+        timestamp updatedAt
     }
     
     world {
-        number world_id PK
-        int server_id FK
+        int world_id PK
         varchar name
-        number port
+        int port
         tinyint status
+        timestamp createdAt
+        timestamp updatedAt
     }
     
     mod {
         int mod_id PK
         varchar name
-    }
-    
-    server_mod {
-        int server_mod_id PK
-        int server_id FK
-        int mod_id FK
+        timestamp createdAt
+        timestamp updatedAt
     }
     
     world_mod {
         int world_mod_id PK
         int world_id FK
         int mod_id FK
-    }
-
-    character {
-        int character_id PK
-        int server_id FK
-        varchar name
+        timestamp createdAt
+        timestamp updatedAt
     }
     
-    server ||--o{ world : "hosts"
-    server ||--o{ server_mod : "uses"
-    server ||--o{ character : "has"
-    mod ||--o{ server_mod : "installed_on"
-    mod ||--o{ world_mod : "used_in"
+    characters {
+        int character_id PK
+        varchar name
+        timestamp createdAt
+        timestamp updatedAt
+    }
+    
     world ||--o{ world_mod : "contains"
+    mod ||--o{ world_mod : "used_in"
 ```

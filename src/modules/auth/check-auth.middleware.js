@@ -1,6 +1,6 @@
 const { verifyJwt } = require('./utils');
 
-function checkAuth() {
+const checkAuth = () => {
 	return (req, res, next) => {
 		const { token } = req.cookies;
 		const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
@@ -11,6 +11,6 @@ function checkAuth() {
 			res.redirect('/login?error=invalid_token');
 		}
 	};
-}
+};
 
 module.exports = checkAuth;

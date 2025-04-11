@@ -36,23 +36,17 @@
         <table border="1">
             <thead>
                 <th>World Name</th>
-                <th>Port</th>
-                <th>Status</th>
                 <th>Actions</th>
             </thead>
             <tbody>
                 <% for (const world of worlds) { %>
-                    <form action="/world/<%= world.id %>/update" method="post">
-                        <tr>
-                            <td><input type="text" name="name" value="<%= world.name %>" readonly></td>
-                            <td><input type="text" name="port" value="<%= world.port %>" readonly></td>
-                            <td><input type="text" name="status" value="<%= world.status %>" readonly></td>
-                            <td>
-                                <button type="submit">Start World</button>
-                                <button type="submit">Delete</button>
-                            </td>
-                        </tr>
-                    </form>    
+                    <tr>
+                        <td><input type="text" name="name" value="<%= world.name %>" readonly></td>
+                        <td>
+                            <a href="/world/<%= world.id %>/start">Start World</a>
+                            <button type="submit">Delete</button>
+                        </td>
+                    </tr>
                 <% } %>
             </tbody>
         </table>

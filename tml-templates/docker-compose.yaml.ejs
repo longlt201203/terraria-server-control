@@ -1,0 +1,21 @@
+version: "3.0"
+
+services:
+  tml-<%= instance.world.name %>:
+    container_name: tml-<%= instance.world.name %>
+    restart: unless-stopped
+    build:
+      context: .
+    #entrypoint: [ "/bin/bash" ] # Uncomment this line if you need to poke around in the container
+    tty: true
+    stdin_open: true
+    ports:
+      - <%= instance.port %>:7777
+    volumes:
+      - ./data:/root/.local/share/Terraria/tModLoader
+    networks:
+      - tml-<%= instance.world.name %>_net
+
+networks:
+  tml-<%= instance.world.name %>_net:
+    driver: bridge
