@@ -8,22 +8,16 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Server List</a></li>
-        </ul>
-    </nav>
-
-    <h1><%= server.name %></h1>
+    <h1>Welcome to Server</h1>
     <p>IP: <%= server.ip %></p>
-    <form action="/server/<%= server.id %>/update-worlds-path" method="post">
+    <form action="/server/update-worlds-path" method="post">
         <div>
             <label for="worldsPath">Worlds Path</label>
             <input type="text" name="worldsPath" id="worldsPath" value="<%= server.worldsPath %>">
             <button type="submit">Update</button>
         </div>
     </form>
-    <form action="/server/<%= server.id %>/update-characters-path" method="post">
+    <form action="/server/update-characters-path" method="post">
         <div>
             <label for="charactersPath">Characters Path</label>
             <input type="text" name="charactersPath" id="charactersPath" value="<%= server.charactersPath %>">
@@ -34,7 +28,7 @@
     <div>
         <h3>World List</h3>
         <div>
-            <form action="/server/<%= server.id %>/sync-worlds">
+            <form action="/world/sync">
                 <button type="submit">Sync</button>
             </form>
         </div>
@@ -48,12 +42,13 @@
             </thead>
             <tbody>
                 <% for (const world of worlds) { %>
-                    <form action="/server/<%= server.id %>/world/<%= world.id %>/update" method="post">
+                    <form action="/world/<%= world.id %>/update" method="post">
                         <tr>
                             <td><input type="text" name="name" value="<%= world.name %>" readonly></td>
                             <td><input type="text" name="port" value="<%= world.port %>" readonly></td>
-                            <td><input type="text" name="port" value="<%= world.status %>" readonly></td>
+                            <td><input type="text" name="status" value="<%= world.status %>" readonly></td>
                             <td>
+                                <button type="submit">Start World</button>
                                 <button type="submit">Delete</button>
                             </td>
                         </tr>
@@ -65,12 +60,29 @@
 
     <div>
         <h3>Character List</h3>
+        <div>
+            <form action="/character/sync">
+                <button type="submit">Sync</button>
+            </form>
+        </div>
 
         <table border="1">
             <thead>
                 <th>Character Name</th>
                 <th>Actions</th>
             </thead>
+            <tbody>
+                <% for (const character of characters) { %>
+                    <form action="/world/<%= character.id %>/update" method="post">
+                        <tr>
+                            <td><input type="text" name="name" value="<%= character.name %>" readonly></td>
+                            <td>
+                                <button type="submit">Delete</button>
+                            </td>
+                        </tr>
+                    </form>    
+                <% } %>
+            </tbody>
         </table>
     </div>
 </body>

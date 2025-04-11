@@ -1,10 +1,8 @@
-require("dotenv").config()
-const sqlize = require("./db/db");
+require('dotenv').config();
+const sqlize = require('./db/db');
 
-sqlize
-  .authenticate()
-  .then(() => {
-    require("./db/relations");
+sqlize.authenticate().then(() => {
+	require('./db/models');
 
-    sqlize.sync({ force: true });
-  })
+	sqlize.sync({ force: true });
+});
